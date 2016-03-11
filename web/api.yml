@@ -2,13 +2,100 @@
 # as a demonstration of an API spec in YAML
 swagger: '2.0'
 info:
-  title: Project API
-  description: API for EVA Project
-  version: "1.0.0"
+    title: Project API
+    description: API for EVA Project
+    version: "1.0.0"
+produces:
+    - application/json
+consumes:
+    - application/json
+schemes:
+    - http
+basePath: /api
 paths:
-  /:
-    get:
-      responses:
-        200:
-          description: OK
+    /leerlingen:
+        get:
+            summary: Leerlingen
+            description: Geeft de lijst van alle leerlingen weer
+            responses:
+                200:
+                    title: Leerlingen
+                    description: Geeft een lijst van leerlingen
+                    scheme:
+                        type: array
+                        items: 
+                            $ref: '#/definitions/Leerling'
+        post:
+            summary: Leerlingen toevoegen
+            description: Voegt een leerling toe
+            parameters:
+                - name: Leerling
+                  in: body
+                  description: De JSON van de leerling die je wilt toevoegen
+                  schema: 
+                      $ref: '#/definitions/Leerling'
+            responses:
+                201: 
+                    description: Leerling succesvol toegevoegd
+
+    /Leerling{inschrijvingsNr}:
+            get:
+                summary: Leerling met inschrijvingsNr
+                description: Geeft de leerling met het inschrijvingsnr terug
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                responses:
+                    200:
+                        title: Leerling
+                        description: De leerling met het inschrijvingsnr
+                        scheme:
+                            $ref: '#/definitions/Leerling'
+                            
+            put:
+                summary: Leerlingen aanpassen
+                description: Voegt een leerling toe
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                    - name: Leerling
+                      in: body
+                      description: De JSON van de leerling die je wilt aanpassen
+                      schema: 
+                          $ref: '#/definitions/Leerling'
+                responses:
+                    204: 
+                        description: Leerling succesvol toegevoegd
+                        
+            delete:
+                summary: Leerling verwijderen
+                description: verwijderd de leerling met LeerlingNr
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                responses:
+                    204:
+                        description: Leerling succesvol verwijderd
+
+defintions:
+    Leerling:
+        type: object
+        properties:
+            naam:
+                type: string
+                description: De naam v/d leerling
+            inschrijvingsnr:
+                type: string
+                description: De unieke id van de leerling
+        
+          
 
