@@ -21,7 +21,7 @@ public class Leerling {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date verval;
     private String type;
-    private Image image;
+    //private Image image;
     private int grafiek;
     @OneToOne
     private EvaluatieMoment eva1;
