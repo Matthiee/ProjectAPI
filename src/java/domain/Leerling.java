@@ -71,13 +71,13 @@ public class Leerling {
         this.type = type;
     }
 
-    public Image getImage() {
+    /*public Image getImage() {
         return image;
     }
 
     public void setImage(Image image) {
         this.image = image;
-    }
+    }*/
 
     public int getGrafiek() {
         return grafiek;
