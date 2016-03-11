@@ -38,7 +38,7 @@ paths:
                 201: 
                     description: Leerling succesvol toegevoegd
 
-    /Leerling{inschrijvingsNr}:
+    /Leerling/{inschrijvingsNr}:
             get:
                 summary: Leerling met inschrijvingsNr
                 description: Geeft de leerling met het inschrijvingsnr terug
@@ -85,6 +85,76 @@ paths:
                 responses:
                     204:
                         description: Leerling succesvol verwijderd
+                        
+    /Leerling/{inschrijvingsNr}/Eva{evaId}:
+            get:
+                summary: Evaluatiemoment
+                description: Geeft de leerling met het inschrijvingsnr terug
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                    - name: evaId
+                      in: path
+                      type: integer
+                      required: true
+                      default: 1
+                      minimum: 1
+                      maximum: 3
+                    
+                responses:
+                    200:
+                        title: Evaluatie
+                        description: De geslecteerde evalutie v/de geselecteerde leerling
+                        scheme:
+                            $ref: '#/definitions/Eva'
+                            
+            put:
+                summary: Evaluatie aanpassen
+                description: Voegt een leerling toe
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                    - name: evaId
+                      in: path
+                      type: integer
+                      required: true
+                      default: 1
+                      minimum: 1
+                      maximum: 3
+                    - name: Eva
+                      in: body
+                      description: De JSON van de eva die je wilt aanpassen
+                      schema: 
+                        $ref: '#/definitions/Eva'
+                responses:
+                    204: 
+                        description: Leerling succesvol toegevoegd
+                        
+            delete:
+                summary: Evaluatiemoment verwijderen
+                description: Verwijderd het geselecteerde evaluatiemoment v/d geselecteerde leerling
+                parameters:
+                    - name: inschrijvingsNr
+                      in: path
+                      type: string
+                      description: inschrijvingsnr v/d leerling
+                      required: true
+                    - name: evaId
+                      in: path
+                      type: integer
+                      required: true
+                      default: 1
+                      minimum: 1
+                      maximum: 3
+                responses:
+                    204:
+                        description: Evaluatiemoment v/d leerling is succesvol verwijderd
 
 defintions:
     Leerling:
@@ -96,6 +166,14 @@ defintions:
             inschrijvingsnr:
                 type: string
                 description: De unieke id van de leerling
+                
+    Eva:
+        type: object
+        properties:
+            id: 
+                type: integer
+                description: De unieke id van de evaluatie
+            # todo: properties toevoegen
         
           
 
