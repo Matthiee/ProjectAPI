@@ -11,6 +11,11 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -62,9 +67,22 @@ public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>{
             b.add("inschrijvingsnr", lln.getInschrijvingsnr());
             b.add("lastSelectedEva", lln.getLastSelectedEva());
             b.add("type", lln.getType());
-            b.add("verval", lln.getVerval().toGMTString());
+            Date verval = lln.getVerval();
+            b.add("verval", verval.getYear() + "-" + verval.getMonth() + "-"+verval.getDay());
             b.add("instructeur", lln.getInstructeur());
+            
+            llnen.add(b.build());
         }
+        
+//        JsonObjectBuilder b = Json.createObjectBuilder();
+//            b.add("naam", "Matthias Beerens");
+//            b.add("grafiek", 0);
+//            b.add("inschrijvingsnr", "2016-03-01-1");
+//            b.add("lastSelectedEva", 1);
+//            b.add("type", "Rijbewijs B");
+//            b.add("verval", "2018-03-01");
+//            b.add("instructeur", "Johan");
+//        llnen.add(b.build());
         
         try(JsonWriter out = Json.createWriter(entityStream)){
             out.writeArray(llnen.build());

@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.json.Json;
 import javax.json.JsonException;
@@ -41,17 +44,20 @@ public class LeerlingReader implements MessageBodyReader<Leerling> {
         try (JsonReader in = Json.createReader(entityStream)) {
             JsonObject j = in.readObject();
             Leerling lln = new Leerling();
+            lln.setNaam(j.getString("naam", null));
             lln.setGrafiek(j.getInt("grafiek", -1));
             lln.setInschrijvingsnr(j.getString("inschrijvingsnr", null));
-            lln.setInstructeur(j.getString("instructeur", null));
             lln.setLastSelectedEva(j.getInt("lastSelectedEva", -1));
-            lln.setNaam(j.getString("naam", null));
             lln.setType(j.getString("type", null));
-            lln.setVerval(new Date(j.getString("verval", null)));
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+            lln.setVerval(fmt.parse(j.getString("verval", "2000-01-01")));
+            lln.setInstructeur(j.getString("instructeur", null));
+            
+            
 
             return lln;
-        } catch (JsonException | ClassCastException e) {
-            throw new BadRequestException("invalid json", e);
+        } catch (JsonException | ClassCastException | ParseException e) {
+            throw new BadRequestException("invalid json");
         }
     }
 
