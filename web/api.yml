@@ -11,7 +11,7 @@ consumes:
     - application/json
 schemes:
     - http
-basePath: /api
+basePath: /api/api
 paths:
     /leerlingen:
         get:
