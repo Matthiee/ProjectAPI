@@ -11,7 +11,7 @@ consumes:
     - application/json
 schemes:
     - http
-basePath: /api
+basePath: /api/api
 paths:
     /leerlingen:
         get:
@@ -38,7 +38,7 @@ paths:
                 201: 
                     description: Leerling succesvol toegevoegd
 
-    /Leerling/{inschrijvingsNr}:
+    /leerling/{inschrijvingsNr}:
             get:
                 summary: Leerling met inschrijvingsNr
                 description: Geeft de leerling met het inschrijvingsnr terug
@@ -74,7 +74,7 @@ paths:
                     204:
                         description: Leerling succesvol verwijderd
                         
-    /Leerling/{inschrijvingsNr}/Eva{evaId}:
+    /leerling/{inschrijvingsNr}/eva{evaId}:
             get:
                 summary: Evaluatiemoment
                 description: Geeft de leerling met het inschrijvingsnr terug
