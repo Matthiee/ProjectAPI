@@ -16,16 +16,19 @@ import javax.json.JsonException;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.ext.MessageBodyReader;
-import jdk.nashorn.internal.runtime.JSONFunctions;
+import javax.ws.rs.ext.Provider;
 
 /**
  *
  * @author Matthias
  */
+@Provider
+@Consumes(MediaType.APPLICATION_JSON)
 public class LeerlingReader implements MessageBodyReader<Leerling> {
 
     @Override
