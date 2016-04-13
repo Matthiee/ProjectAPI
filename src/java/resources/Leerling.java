@@ -18,6 +18,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
@@ -99,5 +100,15 @@ public class Leerling {
         } catch(ParseException e){
             throw new BadRequestException("invalid json");
         }
+    }
+    
+    @DELETE
+    @Path("/{inschrijvingsNr}")
+    public void verwijderLeerling(@PathParam("inschrijvingsNr") String nr){
+        domain.Leerling lln = em.find(domain.Leerling.class, nr);
+        if (lln == null)
+            throw new BadRequestException("inschrijvngsnr bestaat niet!");
+        
+        em.remove(lln);
     }
 }
