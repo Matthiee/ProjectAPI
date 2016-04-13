@@ -1,5 +1,6 @@
 package domain;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,57 +14,147 @@ public class EvaluatieMoment {
 
     @Id
     private int id;
-    private int parkeren;
-    private int garage;
-    private int stuuroef;
-    private int achteruit;
-    private int keren;
-    private int houding;
-    private int remmen;
-    private int koppeling;
-    private int schakelen;
-    private int sturen;
-    private int kijken;
-    private int helling;
-    private int richtingaanwijzers;
-    private int voorrang;
-    private int openbareWeg;
-    private int verkeerstekens;
-    private int snelheid;
-    private int afstand;
-    private int inhalen;
-    private int kruisen;
-    private int linksaf;
-    private int rechtsaf;
-    private int rotonde;
-    private int rijstroken;
-    private int stad;
-    private int autosnelweg;
-    private int schakelaars;
-    private int vloeistoffen;
-    private int banden;
-    private int tanken;
-    private int noodstop;
-    private int gps;
-    private ObservableList houdingOpm;
-    private ObservableList koppelingOpm;
-    private ObservableList remmenOpm;
-    private ObservableList schakelenOpm;
-    private ObservableList sturenOpm;
-    private ObservableList kijkenOpm;
-    private ObservableList hellingOpm;
-    private ObservableList richtingaanwijzersOpm;
-    private ObservableList voorrangOpm;
-    private ObservableList openbareWegOpm;
-    private ObservableList verkeerstekensOpm;
-    private ObservableList snelheidOpm;
-    private ObservableList afstandOpm;
-    private ObservableList inhalenOpm;
-    private ObservableList kruisenOpm;
-    private ObservableList linksafOpm;
-    private ObservableList rechtsafOpm;
+    
+    //voor de kleuren:
+    //Neutraal              = 0     Wit
+    //Gekend                = 1     Groen
+    //Gezien niet Gekend    = 2     Oranje
+    //Niet gekend           = 3     Rood
+    //gegevens rijtechniek
+    private int parkeren, garage, stuuroef, achteruit, keren;
+    private int houding, remmen, koppeling, schakelen, sturen, kijken, helling;
+    private ObservableList houdingOpm, koppelingOpm, remmenOpm, schakelenOpm,
+            sturenOpm, kijkenOpm, hellingOpm;
+    //gegevens verkeerstechniek
+    private int richtingaanwijzers, voorrang, openbareWeg, verkeerstekens, snelheid,
+            afstand, inhalen, kruisen, linksaf, rechtsaf;
+    private ObservableList richtingaanwijzersOpm, voorrangOpm, openbareWegOpm, verkeerstekensOpm,
+            snelheidOpm, afstandOpm, inhalenOpm, kruisenOpm, linksafOpm, rechtsafOpm;
+    //gegevens attitude
     private ObservableList attitudeOpm;
+    //gegevens hoofdmenu;
+    private int rotonde, rijstroken, stad, autosnelweg, schakelaars, vloeistoffen,
+            banden, tanken, noodstop, gps;
     private ObservableList hoofdmenuOpm;
+
+    //Constructors
+    public EvaluatieMoment() {
+        //dummy array om de andere arrays in te vullen
+        int[] array = {0, 0, 0};
+        this.houding = 0;
+        this.koppeling = 0;
+        this.remmen = 0;
+        this.schakelen = 0;
+        this.sturen = 0;
+        this.kijken = 0;
+        this.keren = 0;
+        this.parkeren = 0;
+        this.garage = 0;
+        this.helling = 0;
+        this.stuuroef = 0;
+        this.achteruit = 0;
+        this.houdingOpm = FXCollections.observableArrayList();
+        this.koppelingOpm = FXCollections.observableArrayList();
+        this.remmenOpm = FXCollections.observableArrayList();
+        this.schakelenOpm = FXCollections.observableArrayList();
+        this.sturenOpm = FXCollections.observableArrayList();
+        this.kijkenOpm = FXCollections.observableArrayList();
+        this.hellingOpm = FXCollections.observableArrayList();
+        this.richtingaanwijzers = 0;
+        this.voorrang = 0;
+        this.openbareWeg = 0;
+        this.verkeerstekens = 0;
+        this.snelheid = 0;
+        this.afstand = 0;
+        this.inhalen = 0;
+        this.kruisen = 0;
+        this.linksaf = 0;
+        this.rechtsaf = 0;
+        this.richtingaanwijzersOpm = FXCollections.observableArrayList();
+        this.voorrangOpm = FXCollections.observableArrayList();
+        this.openbareWegOpm = FXCollections.observableArrayList();
+        this.verkeerstekensOpm = FXCollections.observableArrayList();
+        this.snelheidOpm = FXCollections.observableArrayList();
+        this.afstandOpm = FXCollections.observableArrayList();
+        this.inhalenOpm = FXCollections.observableArrayList();
+        this.kruisenOpm = FXCollections.observableArrayList();
+        this.linksafOpm = FXCollections.observableArrayList();
+        this.rechtsafOpm = FXCollections.observableArrayList();
+        this.attitudeOpm = FXCollections.observableArrayList();
+        this.rotonde = 0;
+        this.rijstroken = 0;
+        this.stad = 0;
+        this.autosnelweg = 0;
+        this.schakelaars = 0;
+        this.vloeistoffen = 0;
+        this.banden = 0;
+        this.tanken = 0;
+        this.noodstop = 0;
+        this.gps = 0;
+        this.hoofdmenuOpm = FXCollections.observableArrayList();
+    }
+
+    public EvaluatieMoment(int houding, int koppeling, int remmen, int schakelen, int sturen, int kijken,
+            int keren, int parkeren, int garage, int helling, int stuuroef, int achteruit, ObservableList houdingOpm,
+            ObservableList koppelingOpm, ObservableList remmenOpm, ObservableList schakelenOpm, ObservableList sturenOpm, ObservableList kijkenOpm,
+            ObservableList hellingOpm, int richtingaanwijzers, int voorrang, int openbareWeg, int verkeerstekens,
+            int snelheid, int afstand, int inhalen, int kruisen, int linksaf, int rechtsaf, ObservableList richtingaanwijzersOpm,
+            ObservableList voorrangOpm, ObservableList openbareWegOpm, ObservableList verkeerstekensOpm, ObservableList snelheidOpm, ObservableList afstandOpm,
+            ObservableList inhalenOpm, ObservableList kruisenOpm, ObservableList linksafOpm, ObservableList rechtsafOpm, int grafiek, ObservableList attitudeOpm,
+            int rotonde, int rijstroken, int stad, int autosnelweg, int schakelaars, int vloeistoffen, int banden, int tanken,
+            int noodstop, int gps, ObservableList hoofdmenuOpm) {
+        this.houding = houding;
+        this.koppeling = koppeling;
+        this.remmen = remmen;
+        this.schakelen = schakelen;
+        this.sturen = sturen;
+        this.kijken = kijken;
+        this.keren = keren;
+        this.parkeren = parkeren;
+        this.garage = garage;
+        this.helling = helling;
+        this.stuuroef = stuuroef;
+        this.achteruit = achteruit;
+        this.houdingOpm = houdingOpm;
+        this.koppelingOpm = koppelingOpm;
+        this.remmenOpm = remmenOpm;
+        this.schakelenOpm = schakelenOpm;
+        this.sturenOpm = sturenOpm;
+        this.kijkenOpm = kijkenOpm;
+        this.hellingOpm = hellingOpm;
+        this.richtingaanwijzers = richtingaanwijzers;
+        this.voorrang = voorrang;
+        this.openbareWeg = openbareWeg;
+        this.verkeerstekens = verkeerstekens;
+        this.snelheid = snelheid;
+        this.afstand = afstand;
+        this.inhalen = inhalen;
+        this.kruisen = kruisen;
+        this.linksaf = linksaf;
+        this.rechtsaf = rechtsaf;
+        this.richtingaanwijzersOpm = richtingaanwijzersOpm;
+        this.voorrangOpm = voorrangOpm;
+        this.openbareWegOpm = openbareWegOpm;
+        this.verkeerstekensOpm = verkeerstekensOpm;
+        this.snelheidOpm = snelheidOpm;
+        this.afstandOpm = afstandOpm;
+        this.inhalenOpm = inhalenOpm;
+        this.kruisenOpm = kruisenOpm;
+        this.linksafOpm = linksafOpm;
+        this.rechtsafOpm = rechtsafOpm;
+        this.attitudeOpm = attitudeOpm;
+        this.rotonde = rotonde;
+        this.rijstroken = rijstroken;
+        this.stad = stad;
+        this.autosnelweg = autosnelweg;
+        this.schakelaars = schakelaars;
+        this.vloeistoffen = vloeistoffen;
+        this.banden = banden;
+        this.tanken = tanken;
+        this.noodstop = noodstop;
+        this.gps = gps;
+        this.hoofdmenuOpm = hoofdmenuOpm;
+    }
 
     public int getId() {
         return id;
@@ -72,47 +163,8 @@ public class EvaluatieMoment {
     public void setId(int id) {
         this.id = id;
     }
-
-    public int getParkeren() {
-        return parkeren;
-    }
-
-    public void setParkeren(int parkeren) {
-        this.parkeren = parkeren;
-    }
-
-    public int getGarage() {
-        return garage;
-    }
-
-    public void setGarage(int garage) {
-        this.garage = garage;
-    }
-
-    public int getStuuroef() {
-        return stuuroef;
-    }
-
-    public void setStuuroef(int stuuroef) {
-        this.stuuroef = stuuroef;
-    }
-
-    public int getAchteruit() {
-        return achteruit;
-    }
-
-    public void setAchteruit(int achteruit) {
-        this.achteruit = achteruit;
-    }
-
-    public int getKeren() {
-        return keren;
-    }
-
-    public void setKeren(int keren) {
-        this.keren = keren;
-    }
-
+    
+    //Getters en Setters
     public int getHouding() {
         return houding;
     }
@@ -121,20 +173,20 @@ public class EvaluatieMoment {
         this.houding = houding;
     }
 
-    public int getRemmen() {
-        return remmen;
-    }
-
-    public void setRemmen(int remmen) {
-        this.remmen = remmen;
-    }
-
     public int getKoppeling() {
         return koppeling;
     }
 
     public void setKoppeling(int koppeling) {
         this.koppeling = koppeling;
+    }
+
+    public int getRemmen() {
+        return remmen;
+    }
+
+    public void setRemmen(int remmen) {
+        this.remmen = remmen;
     }
 
     public int getSchakelen() {
@@ -161,12 +213,108 @@ public class EvaluatieMoment {
         this.kijken = kijken;
     }
 
+    public int getKeren() {
+        return keren;
+    }
+
+    public void setKeren(int keren) {
+        this.keren = keren;
+    }
+
+    public int getParkeren() {
+        return parkeren;
+    }
+
+    public void setParkeren(int parkeren) {
+        this.parkeren = parkeren;
+    }
+
+    public int getGarage() {
+        return garage;
+    }
+
+    public void setGarage(int garage) {
+        this.garage = garage;
+    }
+
     public int getHelling() {
         return helling;
     }
 
     public void setHelling(int helling) {
         this.helling = helling;
+    }
+
+    public int getStuuroef() {
+        return stuuroef;
+    }
+
+    public void setStuuroef(int stuuroef) {
+        this.stuuroef = stuuroef;
+    }
+
+    public int getAchteruit() {
+        return achteruit;
+    }
+
+    public void setAchteruit(int achteruit) {
+        this.achteruit = achteruit;
+    }
+
+    public ObservableList getHoudingOpm() {
+        return houdingOpm;
+    }
+
+    public void setHoudingOpm(ObservableList houdingOpm) {
+        this.houdingOpm = houdingOpm;
+    }
+
+    public ObservableList getKoppelingOpm() {
+        return koppelingOpm;
+    }
+
+    public void setKoppelingOpm(ObservableList koppelingOpm) {
+        this.koppelingOpm = koppelingOpm;
+    }
+
+    public ObservableList getRemmenOpm() {
+        return remmenOpm;
+    }
+
+    public void setRemmenOpm(ObservableList remmenOpm) {
+        this.remmenOpm = remmenOpm;
+    }
+
+    public ObservableList getSchakelenOpm() {
+        return schakelenOpm;
+    }
+
+    public void setSchakelenOpm(ObservableList schakelenOpm) {
+        this.schakelenOpm = schakelenOpm;
+    }
+
+    public ObservableList getSturenOpm() {
+        return sturenOpm;
+    }
+
+    public void setSturenOpm(ObservableList sturenOpm) {
+        this.sturenOpm = sturenOpm;
+    }
+
+    public ObservableList getKijkenOpm() {
+        return kijkenOpm;
+    }
+
+    public void setKijkenOpm(ObservableList kijkenOpm) {
+        this.kijkenOpm = kijkenOpm;
+    }
+
+    public ObservableList getHellingOpm() {
+        return hellingOpm;
+    }
+
+    public void setHellingOpm(ObservableList hellingOpm) {
+        this.hellingOpm = hellingOpm;
     }
 
     public int getRichtingaanwijzers() {
@@ -247,142 +395,6 @@ public class EvaluatieMoment {
 
     public void setRechtsaf(int rechtsaf) {
         this.rechtsaf = rechtsaf;
-    }
-
-    public int getRotonde() {
-        return rotonde;
-    }
-
-    public void setRotonde(int rotonde) {
-        this.rotonde = rotonde;
-    }
-
-    public int getRijstroken() {
-        return rijstroken;
-    }
-
-    public void setRijstroken(int rijstroken) {
-        this.rijstroken = rijstroken;
-    }
-
-    public int getStad() {
-        return stad;
-    }
-
-    public void setStad(int stad) {
-        this.stad = stad;
-    }
-
-    public int getAutosnelweg() {
-        return autosnelweg;
-    }
-
-    public void setAutosnelweg(int autosnelweg) {
-        this.autosnelweg = autosnelweg;
-    }
-
-    public int getSchakelaars() {
-        return schakelaars;
-    }
-
-    public void setSchakelaars(int schakelaars) {
-        this.schakelaars = schakelaars;
-    }
-
-    public int getVloeistoffen() {
-        return vloeistoffen;
-    }
-
-    public void setVloeistoffen(int vloeistoffen) {
-        this.vloeistoffen = vloeistoffen;
-    }
-
-    public int getBanden() {
-        return banden;
-    }
-
-    public void setBanden(int banden) {
-        this.banden = banden;
-    }
-
-    public int getTanken() {
-        return tanken;
-    }
-
-    public void setTanken(int tanken) {
-        this.tanken = tanken;
-    }
-
-    public int getNoodstop() {
-        return noodstop;
-    }
-
-    public void setNoodstop(int noodstop) {
-        this.noodstop = noodstop;
-    }
-
-    public int getGps() {
-        return gps;
-    }
-
-    public void setGps(int gps) {
-        this.gps = gps;
-    }
-
-    public ObservableList getHoudingOpm() {
-        return houdingOpm;
-    }
-
-    public void setHoudingOpm(ObservableList houdingOpm) {
-        this.houdingOpm = houdingOpm;
-    }
-
-    public ObservableList getKoppelingOpm() {
-        return koppelingOpm;
-    }
-
-    public void setKoppelingOpm(ObservableList koppelingOpm) {
-        this.koppelingOpm = koppelingOpm;
-    }
-
-    public ObservableList getRemmenOpm() {
-        return remmenOpm;
-    }
-
-    public void setRemmenOpm(ObservableList remmenOpm) {
-        this.remmenOpm = remmenOpm;
-    }
-
-    public ObservableList getSchakelenOpm() {
-        return schakelenOpm;
-    }
-
-    public void setSchakelenOpm(ObservableList schakelenOpm) {
-        this.schakelenOpm = schakelenOpm;
-    }
-
-    public ObservableList getSturenOpm() {
-        return sturenOpm;
-    }
-
-    public void setSturenOpm(ObservableList sturenOpm) {
-        this.sturenOpm = sturenOpm;
-    }
-
-    public ObservableList getKijkenOpm() {
-        return kijkenOpm;
-    }
-
-    public void setKijkenOpm(ObservableList kijkenOpm) {
-        this.kijkenOpm = kijkenOpm;
-    }
-
-    public ObservableList getHellingOpm() {
-        return hellingOpm;
-    }
-
-    public void setHellingOpm(ObservableList hellingOpm) {
-        this.hellingOpm = hellingOpm;
     }
 
     public ObservableList getRichtingaanwijzersOpm() {
@@ -473,6 +485,86 @@ public class EvaluatieMoment {
         this.attitudeOpm = attitudeOpm;
     }
 
+    public int getRotonde() {
+        return rotonde;
+    }
+
+    public void setRotonde(int rotonde) {
+        this.rotonde = rotonde;
+    }
+
+    public int getRijstroken() {
+        return rijstroken;
+    }
+
+    public void setRijstroken(int rijstroken) {
+        this.rijstroken = rijstroken;
+    }
+
+    public int getStad() {
+        return stad;
+    }
+
+    public void setStad(int stad) {
+        this.stad = stad;
+    }
+
+    public int getAutosnelweg() {
+        return autosnelweg;
+    }
+
+    public void setAutosnelweg(int autosnelweg) {
+        this.autosnelweg = autosnelweg;
+    }
+
+    public int getSchakelaars() {
+        return schakelaars;
+    }
+
+    public void setSchakelaars(int schakelaars) {
+        this.schakelaars = schakelaars;
+    }
+
+    public int getVloeistoffen() {
+        return vloeistoffen;
+    }
+
+    public void setVloeistoffen(int vloeistoffen) {
+        this.vloeistoffen = vloeistoffen;
+    }
+
+    public int getBanden() {
+        return banden;
+    }
+
+    public void setBanden(int banden) {
+        this.banden = banden;
+    }
+
+    public int getTanken() {
+        return tanken;
+    }
+
+    public void setTanken(int tanken) {
+        this.tanken = tanken;
+    }
+
+    public int getNoodstop() {
+        return noodstop;
+    }
+
+    public void setNoodstop(int noodstop) {
+        this.noodstop = noodstop;
+    }
+
+    public int getGps() {
+        return gps;
+    }
+
+    public void setGps(int gps) {
+        this.gps = gps;
+    }
+
     public ObservableList getHoofdmenuOpm() {
         return hoofdmenuOpm;
     }
@@ -480,7 +572,5 @@ public class EvaluatieMoment {
     public void setHoofdmenuOpm(ObservableList hoofdmenuOpm) {
         this.hoofdmenuOpm = hoofdmenuOpm;
     }
-    
-    
 
 }
