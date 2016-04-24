@@ -40,7 +40,6 @@ public class EvaluatieMoment {
     //Constructors
     public EvaluatieMoment() {
         //dummy array om de andere arrays in te vullen
-        int[] array = {0, 0, 0};
         this.houding = 0;
         this.koppeling = 0;
         this.remmen = 0;
