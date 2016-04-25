@@ -14,7 +14,9 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.json.Json;
@@ -115,8 +117,8 @@ public class EvaluatiemomentReader implements MessageBodyReader<EvaluatieMoment>
         }
     }
     
-    private ObservableList<String> GetOpmerkingen(JsonArray arr){
-        ObservableList<String> o = FXCollections.observableArrayList();
+    private List<String> GetOpmerkingen(JsonArray arr){
+        List<String> o = new ArrayList<>();
         for (int i = 0; i < arr.size(); i++) {
             o.add(arr.getString(i));
         }

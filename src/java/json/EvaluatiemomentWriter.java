@@ -118,7 +118,7 @@ public class EvaluatiemomentWriter implements MessageBodyWriter<EvaluatieMoment>
         }
     }
     
-    private JsonArrayBuilder getArr(ObservableList<String> o){
+    private JsonArrayBuilder getArr(List<String> o){
         JsonArrayBuilder b = Json.createArrayBuilder();
         
         o.forEach(s -> b.add(s));

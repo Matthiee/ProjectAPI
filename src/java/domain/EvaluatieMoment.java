@@ -1,7 +1,7 @@
 package domain;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -23,19 +23,19 @@ public class EvaluatieMoment {
     //gegevens rijtechniek
     private int parkeren, garage, stuuroef, achteruit, keren;
     private int houding, remmen, koppeling, schakelen, sturen, kijken, helling;
-    private ObservableList houdingOpm, koppelingOpm, remmenOpm, schakelenOpm,
+    private List<String> houdingOpm, koppelingOpm, remmenOpm, schakelenOpm,
             sturenOpm, kijkenOpm, hellingOpm;
     //gegevens verkeerstechniek
     private int richtingaanwijzers, voorrang, openbareWeg, verkeerstekens, snelheid,
             afstand, inhalen, kruisen, linksaf, rechtsaf;
-    private ObservableList richtingaanwijzersOpm, voorrangOpm, openbareWegOpm, verkeerstekensOpm,
+    private List<String> richtingaanwijzersOpm, voorrangOpm, openbareWegOpm, verkeerstekensOpm,
             snelheidOpm, afstandOpm, inhalenOpm, kruisenOpm, linksafOpm, rechtsafOpm;
     //gegevens attitude
-    private ObservableList attitudeOpm;
+    private List<String> attitudeOpm;
     //gegevens hoofdmenu;
     private int rotonde, rijstroken, stad, autosnelweg, schakelaars, vloeistoffen,
             banden, tanken, noodstop, gps;
-    private ObservableList hoofdmenuOpm;
+    private List<String> hoofdmenuOpm;
 
     //Constructors
     public EvaluatieMoment() {
@@ -52,13 +52,13 @@ public class EvaluatieMoment {
         this.helling = 0;
         this.stuuroef = 0;
         this.achteruit = 0;
-        this.houdingOpm = FXCollections.observableArrayList();
-        this.koppelingOpm = FXCollections.observableArrayList();
-        this.remmenOpm = FXCollections.observableArrayList();
-        this.schakelenOpm = FXCollections.observableArrayList();
-        this.sturenOpm = FXCollections.observableArrayList();
-        this.kijkenOpm = FXCollections.observableArrayList();
-        this.hellingOpm = FXCollections.observableArrayList();
+        this.houdingOpm = new ArrayList<String>();
+        this.koppelingOpm = new ArrayList<String>();
+        this.remmenOpm = new ArrayList<String>();
+        this.schakelenOpm = new ArrayList<String>();
+        this.sturenOpm = new ArrayList<String>();
+        this.kijkenOpm = new ArrayList<String>();
+        this.hellingOpm = new ArrayList<String>();
         this.richtingaanwijzers = 0;
         this.voorrang = 0;
         this.openbareWeg = 0;
@@ -69,17 +69,17 @@ public class EvaluatieMoment {
         this.kruisen = 0;
         this.linksaf = 0;
         this.rechtsaf = 0;
-        this.richtingaanwijzersOpm = FXCollections.observableArrayList();
-        this.voorrangOpm = FXCollections.observableArrayList();
-        this.openbareWegOpm = FXCollections.observableArrayList();
-        this.verkeerstekensOpm = FXCollections.observableArrayList();
-        this.snelheidOpm = FXCollections.observableArrayList();
-        this.afstandOpm = FXCollections.observableArrayList();
-        this.inhalenOpm = FXCollections.observableArrayList();
-        this.kruisenOpm = FXCollections.observableArrayList();
-        this.linksafOpm = FXCollections.observableArrayList();
-        this.rechtsafOpm = FXCollections.observableArrayList();
-        this.attitudeOpm = FXCollections.observableArrayList();
+        this.richtingaanwijzersOpm = new ArrayList<String>();
+        this.voorrangOpm = new ArrayList<String>();
+        this.openbareWegOpm = new ArrayList<String>();
+        this.verkeerstekensOpm = new ArrayList<String>();
+        this.snelheidOpm = new ArrayList<String>();
+        this.afstandOpm = new ArrayList<String>();
+        this.inhalenOpm = new ArrayList<String>();
+        this.kruisenOpm = new ArrayList<String>();
+        this.linksafOpm = new ArrayList<String>();
+        this.rechtsafOpm = new ArrayList<String>();
+        this.attitudeOpm = new ArrayList<String>();
         this.rotonde = 0;
         this.rijstroken = 0;
         this.stad = 0;
@@ -90,18 +90,18 @@ public class EvaluatieMoment {
         this.tanken = 0;
         this.noodstop = 0;
         this.gps = 0;
-        this.hoofdmenuOpm = FXCollections.observableArrayList();
+        this.hoofdmenuOpm = new ArrayList<String>();
     }
 
     public EvaluatieMoment(int houding, int koppeling, int remmen, int schakelen, int sturen, int kijken,
-            int keren, int parkeren, int garage, int helling, int stuuroef, int achteruit, ObservableList houdingOpm,
-            ObservableList koppelingOpm, ObservableList remmenOpm, ObservableList schakelenOpm, ObservableList sturenOpm, ObservableList kijkenOpm,
-            ObservableList hellingOpm, int richtingaanwijzers, int voorrang, int openbareWeg, int verkeerstekens,
-            int snelheid, int afstand, int inhalen, int kruisen, int linksaf, int rechtsaf, ObservableList richtingaanwijzersOpm,
-            ObservableList voorrangOpm, ObservableList openbareWegOpm, ObservableList verkeerstekensOpm, ObservableList snelheidOpm, ObservableList afstandOpm,
-            ObservableList inhalenOpm, ObservableList kruisenOpm, ObservableList linksafOpm, ObservableList rechtsafOpm, int grafiek, ObservableList attitudeOpm,
+            int keren, int parkeren, int garage, int helling, int stuuroef, int achteruit, List<String> houdingOpm,
+            List<String> koppelingOpm, List<String> remmenOpm, List<String> schakelenOpm, List<String> sturenOpm, List<String> kijkenOpm,
+            List<String> hellingOpm, int richtingaanwijzers, int voorrang, int openbareWeg, int verkeerstekens,
+            int snelheid, int afstand, int inhalen, int kruisen, int linksaf, int rechtsaf, List<String> richtingaanwijzersOpm,
+            List<String> voorrangOpm, List<String> openbareWegOpm, List<String> verkeerstekensOpm, List<String> snelheidOpm, List<String> afstandOpm,
+            List<String> inhalenOpm, List<String> kruisenOpm, List<String> linksafOpm, List<String> rechtsafOpm, int grafiek, List<String> attitudeOpm,
             int rotonde, int rijstroken, int stad, int autosnelweg, int schakelaars, int vloeistoffen, int banden, int tanken,
-            int noodstop, int gps, ObservableList hoofdmenuOpm) {
+            int noodstop, int gps, List<String> hoofdmenuOpm) {
         this.houding = houding;
         this.koppeling = koppeling;
         this.remmen = remmen;
@@ -260,59 +260,59 @@ public class EvaluatieMoment {
         this.achteruit = achteruit;
     }
 
-    public ObservableList getHoudingOpm() {
+    public List<String> getHoudingOpm() {
         return houdingOpm;
     }
 
-    public void setHoudingOpm(ObservableList houdingOpm) {
+    public void setHoudingOpm(List<String> houdingOpm) {
         this.houdingOpm = houdingOpm;
     }
 
-    public ObservableList getKoppelingOpm() {
+    public List<String> getKoppelingOpm() {
         return koppelingOpm;
     }
 
-    public void setKoppelingOpm(ObservableList koppelingOpm) {
+    public void setKoppelingOpm(List<String> koppelingOpm) {
         this.koppelingOpm = koppelingOpm;
     }
 
-    public ObservableList getRemmenOpm() {
+    public List<String> getRemmenOpm() {
         return remmenOpm;
     }
 
-    public void setRemmenOpm(ObservableList remmenOpm) {
+    public void setRemmenOpm(List<String> remmenOpm) {
         this.remmenOpm = remmenOpm;
     }
 
-    public ObservableList getSchakelenOpm() {
+    public List<String> getSchakelenOpm() {
         return schakelenOpm;
     }
 
-    public void setSchakelenOpm(ObservableList schakelenOpm) {
+    public void setSchakelenOpm(List<String> schakelenOpm) {
         this.schakelenOpm = schakelenOpm;
     }
 
-    public ObservableList getSturenOpm() {
+    public List<String> getSturenOpm() {
         return sturenOpm;
     }
 
-    public void setSturenOpm(ObservableList sturenOpm) {
+    public void setSturenOpm(List<String> sturenOpm) {
         this.sturenOpm = sturenOpm;
     }
 
-    public ObservableList getKijkenOpm() {
+    public List<String> getKijkenOpm() {
         return kijkenOpm;
     }
 
-    public void setKijkenOpm(ObservableList kijkenOpm) {
+    public void setKijkenOpm(List<String> kijkenOpm) {
         this.kijkenOpm = kijkenOpm;
     }
 
-    public ObservableList getHellingOpm() {
+    public List<String> getHellingOpm() {
         return hellingOpm;
     }
 
-    public void setHellingOpm(ObservableList hellingOpm) {
+    public void setHellingOpm(List<String> hellingOpm) {
         this.hellingOpm = hellingOpm;
     }
 
@@ -396,91 +396,91 @@ public class EvaluatieMoment {
         this.rechtsaf = rechtsaf;
     }
 
-    public ObservableList getRichtingaanwijzersOpm() {
+    public List<String> getRichtingaanwijzersOpm() {
         return richtingaanwijzersOpm;
     }
 
-    public void setRichtingaanwijzersOpm(ObservableList richtingaanwijzersOpm) {
+    public void setRichtingaanwijzersOpm(List<String> richtingaanwijzersOpm) {
         this.richtingaanwijzersOpm = richtingaanwijzersOpm;
     }
 
-    public ObservableList getVoorrangOpm() {
+    public List<String> getVoorrangOpm() {
         return voorrangOpm;
     }
 
-    public void setVoorrangOpm(ObservableList voorrangOpm) {
+    public void setVoorrangOpm(List<String> voorrangOpm) {
         this.voorrangOpm = voorrangOpm;
     }
 
-    public ObservableList getOpenbareWegOpm() {
+    public List<String> getOpenbareWegOpm() {
         return openbareWegOpm;
     }
 
-    public void setOpenbareWegOpm(ObservableList openbareWegOpm) {
+    public void setOpenbareWegOpm(List<String> openbareWegOpm) {
         this.openbareWegOpm = openbareWegOpm;
     }
 
-    public ObservableList getVerkeerstekensOpm() {
+    public List<String> getVerkeerstekensOpm() {
         return verkeerstekensOpm;
     }
 
-    public void setVerkeerstekensOpm(ObservableList verkeerstekensOpm) {
+    public void setVerkeerstekensOpm(List<String> verkeerstekensOpm) {
         this.verkeerstekensOpm = verkeerstekensOpm;
     }
 
-    public ObservableList getSnelheidOpm() {
+    public List<String> getSnelheidOpm() {
         return snelheidOpm;
     }
 
-    public void setSnelheidOpm(ObservableList snelheidOpm) {
+    public void setSnelheidOpm(List<String> snelheidOpm) {
         this.snelheidOpm = snelheidOpm;
     }
 
-    public ObservableList getAfstandOpm() {
+    public List<String> getAfstandOpm() {
         return afstandOpm;
     }
 
-    public void setAfstandOpm(ObservableList afstandOpm) {
+    public void setAfstandOpm(List<String> afstandOpm) {
         this.afstandOpm = afstandOpm;
     }
 
-    public ObservableList getInhalenOpm() {
+    public List<String> getInhalenOpm() {
         return inhalenOpm;
     }
 
-    public void setInhalenOpm(ObservableList inhalenOpm) {
+    public void setInhalenOpm(List<String> inhalenOpm) {
         this.inhalenOpm = inhalenOpm;
     }
 
-    public ObservableList getKruisenOpm() {
+    public List<String> getKruisenOpm() {
         return kruisenOpm;
     }
 
-    public void setKruisenOpm(ObservableList kruisenOpm) {
+    public void setKruisenOpm(List<String> kruisenOpm) {
         this.kruisenOpm = kruisenOpm;
     }
 
-    public ObservableList getLinksafOpm() {
+    public List<String> getLinksafOpm() {
         return linksafOpm;
     }
 
-    public void setLinksafOpm(ObservableList linksafOpm) {
+    public void setLinksafOpm(List<String> linksafOpm) {
         this.linksafOpm = linksafOpm;
     }
 
-    public ObservableList getRechtsafOpm() {
+    public List<String> getRechtsafOpm() {
         return rechtsafOpm;
     }
 
-    public void setRechtsafOpm(ObservableList rechtsafOpm) {
+    public void setRechtsafOpm(List<String> rechtsafOpm) {
         this.rechtsafOpm = rechtsafOpm;
     }
 
-    public ObservableList getAttitudeOpm() {
+    public List<String> getAttitudeOpm() {
         return attitudeOpm;
     }
 
-    public void setAttitudeOpm(ObservableList attitudeOpm) {
+    public void setAttitudeOpm(List<String> attitudeOpm) {
         this.attitudeOpm = attitudeOpm;
     }
 
@@ -564,11 +564,11 @@ public class EvaluatieMoment {
         this.gps = gps;
     }
 
-    public ObservableList getHoofdmenuOpm() {
+    public List<String> getHoofdmenuOpm() {
         return hoofdmenuOpm;
     }
 
-    public void setHoofdmenuOpm(ObservableList hoofdmenuOpm) {
+    public void setHoofdmenuOpm(List<String> hoofdmenuOpm) {
         this.hoofdmenuOpm = hoofdmenuOpm;
     }
 
