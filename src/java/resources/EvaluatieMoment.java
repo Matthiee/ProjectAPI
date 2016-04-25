@@ -86,7 +86,7 @@ public class EvaluatieMoment {
                 break;
         }
         
-        em.persist(l);
+        //em.persist(l);
 
     }
 
