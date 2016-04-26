@@ -3,6 +3,7 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 public class EvaluatieMoment {
 
     @Id
+    @GeneratedValue
     private int id;
     
     //voor de kleuren:
