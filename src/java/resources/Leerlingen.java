@@ -7,6 +7,8 @@ package resources;
 
 import domain.Leerling;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
@@ -37,6 +39,15 @@ public class Leerlingen {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Leerling> getAllLeerlingen() {
+//        Leerling l = new Leerling();
+//        l.setNaam("Matthias");
+//        l.setInschrijvingsnr("2016-04-27-1");
+//        l.setGrafiek(0);
+//        l.setInstructeur("Paul");
+//        l.setVerval(new Date());
+//        l.setType("Rijbewijs B");
+//        l.setLastSelectedEva(1);
+//        addLeerling(l);
         return em.createNamedQuery("Leerling.findAll", Leerling.class).getResultList();
     }
     
