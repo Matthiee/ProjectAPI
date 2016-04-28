@@ -35,32 +35,21 @@ import javax.ws.rs.ext.Provider;
  */
 @Provider
 @Produces(value = MediaType.APPLICATION_JSON)
-public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>{
+public class LeerlingWriter implements MessageBodyWriter<Leerling>{
 
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        if (!List.class.isAssignableFrom(type))
-            return false;
-        
-        if (genericType instanceof ParameterizedType){
-            Type[] args = ((ParameterizedType)genericType).getActualTypeArguments();
-            return args.length==1&&args[0].equals(Leerling.class);
-        } else{
-            return false;
-        }
-            
-            
-    }
+        return (Leerling.class.isAssignableFrom(type));
+    } 
 
     @Override
-    public long getSize(List<Leerling> t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
+    public long getSize(Leerling t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return -1;
     }
 
     @Override
-    public void writeTo(List<Leerling> t, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-        JsonArrayBuilder llnen  = Json.createArrayBuilder();
-        for(Leerling lln : t){
+    public void writeTo(Leerling lln, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
+        
             JsonObjectBuilder b = Json.createObjectBuilder();
             b.add("naam", lln.getNaam());
             b.add("grafiek", lln.getGrafiek());
@@ -71,23 +60,9 @@ public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>{
             b.add("verval", fmt.format(lln.getVerval()));
             b.add("instructeur", lln.getInstructeur());
             
-            llnen.add(b.build());
-        }
-        
-//        JsonObjectBuilder b = Json.createObjectBuilder();
-//            b.add("naam", "Matthias Beerens");
-//            b.add("grafiek", 0);
-//            b.add("inschrijvingsnr", "2016-03-01-1");
-//            b.add("lastSelectedEva", 1);
-//            b.add("type", "Rijbewijs B");
-//            b.add("verval", "2018-03-01");
-//            b.add("instructeur", "Johan");
-//        llnen.add(b.build());
-        
         try(JsonWriter out = Json.createWriter(entityStream)){
-            out.writeArray(llnen.build());
+            out.writeObject(b.build());
         }
-            
     }
     
 }

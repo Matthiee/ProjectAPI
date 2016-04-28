@@ -2,6 +2,7 @@ package domain;
 
 import java.awt.Image;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
@@ -23,11 +24,11 @@ public class Leerling {
     private String type;
     //private Image image;
     private int grafiek;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private EvaluatieMoment eva1;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private EvaluatieMoment eva2;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     private EvaluatieMoment eva3;
     private int lastSelectedEva;
 
