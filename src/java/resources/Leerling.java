@@ -94,7 +94,7 @@ public class Leerling {
             }
 
             if (diff.containsKey("instructeur")) {
-                lln.setNaam(diff.getString("instructeur"));
+                lln.setInstructeur(diff.getString("instructeur"));
             }
         } catch(ParseException e){
             throw new BadRequestException("invalid json");
