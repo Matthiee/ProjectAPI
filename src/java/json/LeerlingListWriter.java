@@ -70,6 +70,7 @@ public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>{
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             b.add("verval", fmt.format(lln.getVerval()));
             b.add("instructeur", lln.getInstructeur());
+             b.add("aandachtspunten", getArr(lln.getAandachtsPuntenLijst()));
             
             llnen.add(b.build());
         }
@@ -88,6 +89,16 @@ public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>{
             out.writeArray(llnen.build());
         }
             
+    }
+    
+    private JsonArrayBuilder getArr(List<String> o){
+        JsonArrayBuilder b = Json.createArrayBuilder();
+        
+        for(String s : o){
+            b.add(s);
+        }
+        
+        return  b;
     }
     
 }

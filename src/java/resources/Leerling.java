@@ -9,8 +9,11 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
 import javax.persistence.EntityManager;
@@ -94,7 +97,11 @@ public class Leerling {
             }
 
             if (diff.containsKey("instructeur")) {
-                lln.setNaam(diff.getString("instructeur"));
+                lln.setInstructeur(diff.getString("instructeur"));
+            }
+            
+            if (diff.containsKey("aandachtspunten")){
+                lln.setAandachtsPuntenLijst(getList(diff.getJsonArray("aandachtspunten")));
             }
         } catch(ParseException e){
             throw new BadRequestException("invalid json");
@@ -109,5 +116,14 @@ public class Leerling {
             throw new BadRequestException("inschrijvngsnr bestaat niet!");
         
         em.remove(lln);
+    }
+    
+    private List<String> getList(JsonArray arr){
+        List<String> o = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            o.add(arr.getString(i));
+        }
+        
+        return o;
     }
 }
