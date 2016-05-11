@@ -1,7 +1,9 @@
 package domain;
 
 import java.awt.Image;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,6 +34,16 @@ public class Leerling {
     private EvaluatieMoment eva3;
     private int lastSelectedEva;
 
+    private List<String> aandachtsPuntenLijst = new ArrayList<>();
+
+    public List<String> getAandachtsPuntenLijst() {
+        return aandachtsPuntenLijst;
+    }
+
+    public void setAandachtsPuntenLijst(List<String> aandachtsPuntenLijst) {
+        this.aandachtsPuntenLijst = aandachtsPuntenLijst;
+    }
+    
     public String getNaam() {
         return naam;
     }

@@ -13,8 +13,11 @@ import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.json.Json;
+import javax.json.JsonArray;
 import javax.json.JsonException;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
@@ -52,13 +55,22 @@ public class LeerlingReader implements MessageBodyReader<Leerling> {
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             lln.setVerval(fmt.parse(j.getString("verval", "2000-01-01")));
             lln.setInstructeur(j.getString("instructeur", null));
-            
+            lln.setAandachtsPuntenLijst(getList(j.getJsonArray("aandachtspunten")));
             
 
             return lln;
         } catch (JsonException | ClassCastException | ParseException e) {
             throw new BadRequestException("invalid json");
         }
+    }
+    
+    private List<String> getList(JsonArray arr){
+        List<String> o = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            o.add(arr.getString(i));
+        }
+        
+        return o;
     }
 
 }

@@ -11,12 +11,14 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonArrayBuilder;
@@ -59,10 +61,21 @@ public class LeerlingWriter implements MessageBodyWriter<Leerling>{
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             b.add("verval", fmt.format(lln.getVerval()));
             b.add("instructeur", lln.getInstructeur());
+            b.add("aandachtspunten", getArr(lln.getAandachtsPuntenLijst()));
             
         try(JsonWriter out = Json.createWriter(entityStream)){
             out.writeObject(b.build());
         }
+    }
+    
+    private JsonArrayBuilder getArr(List<String> o){
+        JsonArrayBuilder b = Json.createArrayBuilder();
+        
+        for(String s : o){
+            b.add(s);
+        }
+        
+        return  b;
     }
     
 }
